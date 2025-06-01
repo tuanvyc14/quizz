@@ -8,13 +8,17 @@ function Study() {
         <h1 className="text-xl font-bold mb-4">📘 Tài liệu ôn tập</h1>
         <ul className="list-disc pl-5 text-blue-700 space-y-2">
           <li>
-            <a
-              href="/6-buoc-ban-hang.pptx"
-              download
-              className="underline hover:text-blue-500"
-            >
-              📄 6 BƯỚC BÁN HÀNG (PPTX)
-            </a>
+           <div className="mt-6 border-t pt-4">
+  <h2 className="text-lg font-semibold mb-2">📘 Tài liệu ôn tập kiến thức</h2>
+  <iframe
+    src="/6-buoc-ban-hang.pdf"
+    width="100%"
+    height="500px"
+    title="Tài liệu 6 bước bán hàng"
+    className="border rounded"
+  />
+</div>
+
           </li>
         </ul>
       </div>
