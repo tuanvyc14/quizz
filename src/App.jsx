@@ -3,7 +3,6 @@ import Login from "./Login";
 import Home from "./Home";
 import QuizList from "./QuizList";
 import Quiz from "./Quiz";
-import Quiz from "./Quiz";
 import Study from "./Study";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
