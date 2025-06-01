@@ -8,7 +8,7 @@ function Study() {
 
         <h2 className="text-lg font-semibold mb-4">Tài liệu: 6 BƯỚC BÁN HÀNG</h2>
 
-        <div className="w-full h-[80vh]">
+        <div className="w-full" style={{ height: "80vh", overflow: "auto" }}>
           <iframe
             src="/6-buoc-ban-hang.pdf"
             title="Tài liệu 6 bước bán hàng"
