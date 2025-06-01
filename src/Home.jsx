@@ -11,7 +11,7 @@ const Home = () => {
           className="bg-green-600 hover:bg-green-700 w-full text-white font-semibold py-3 rounded-xl">
           📝 Làm bài kiểm tra
         </button>
-        <button onClick={() => alert('Tính năng đang cập nhật')}
+        <button onClick={() => navigate("/study")}
           className="bg-yellow-500 hover:bg-yellow-600 w-full text-white font-semibold py-3 rounded-xl">
           📘 Ôn tập kiến thức
         </button>

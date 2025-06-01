@@ -3,6 +3,8 @@ import Login from "./Login";
 import Home from "./Home";
 import QuizList from "./QuizList";
 import Quiz from "./Quiz";
+import Quiz from "./Quiz";
+import Study from "./Study";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/quiz-list" element={<QuizList />} />
         <Route path="/quiz/:quizId" element={<Quiz />} />
+        <Route path="/study" element={<Study />} />
       </Routes>
     </Router>
   );
