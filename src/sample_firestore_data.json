@@ -1,0 +1,17 @@
+// Mẫu cấu trúc dữ liệu trong Firestore (bộ sưu tập: quizzes)
+
+{
+  "title": "Kiểm tra kiến thức sản phẩm",
+  "questions": [
+    {
+      "question": "Sản phẩm A có tính năng gì?",
+      "options": ["A", "B", "C"],
+      "answer": "B"
+    },
+    {
+      "question": "Sản phẩm B dùng cho ai?",
+      "options": ["Khách hàng", "Nhà phân phối"],
+      "answer": "Khách hàng"
+    }
+  ]
+}

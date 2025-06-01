@@ -1,0 +1,71 @@
+[
+  {
+    "title": "Kiến Thức Sản Phẩm Mới",
+    "questions": [
+      {
+        "question": "Sản phẩm X có xuất xứ từ đâu?",
+        "options": [
+          "Việt Nam",
+          "Trung Quốc",
+          "Hàn Quốc"
+        ],
+        "answer": "Việt Nam"
+      },
+      {
+        "question": "Tính năng chính của sản phẩm X là gì?",
+        "options": [
+          "Chống nước",
+          "Chống va đập",
+          "Giá rẻ"
+        ],
+        "answer": "Chống va đập"
+      }
+    ]
+  },
+  {
+    "title": "Kiểm Tra Quy Trình Làm Việc",
+    "questions": [
+      {
+        "question": "Bước đầu tiên trong quy trình bán hàng là gì?",
+        "options": [
+          "Chào hỏi khách",
+          "Tư vấn sản phẩm",
+          "Thanh toán"
+        ],
+        "answer": "Chào hỏi khách"
+      },
+      {
+        "question": "Khi có khiếu nại từ khách, bạn cần làm gì?",
+        "options": [
+          "Phớt lờ",
+          "Chuyển cho quản lý",
+          "Ghi nhận và xin lỗi"
+        ],
+        "answer": "Ghi nhận và xin lỗi"
+      }
+    ]
+  },
+  {
+    "title": "Trắc Nghiệm Tình Huống Giao Tiếp",
+    "questions": [
+      {
+        "question": "Nếu khách hàng đang giận dữ, bạn nên?",
+        "options": [
+          "Tranh cãi",
+          "Giữ bình tĩnh và lắng nghe",
+          "Bỏ đi"
+        ],
+        "answer": "Giữ bình tĩnh và lắng nghe"
+      },
+      {
+        "question": "Khi khách hàng hỏi về sản phẩm mà bạn không rõ, bạn nên?",
+        "options": [
+          "Đoán bừa",
+          "Từ chối trả lời",
+          "Hỏi lại quản lý để tư vấn chính xác"
+        ],
+        "answer": "Hỏi lại quản lý để tư vấn chính xác"
+      }
+    ]
+  }
+]
