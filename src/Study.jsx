@@ -8,19 +8,17 @@ function Study() {
         <h1 className="text-2xl font-bold mb-4">📘 Tài liệu ôn tập</h1>
         <h2 className="text-lg font-semibold mb-4">Tài liệu: 6 BƯỚC BÁN HÀNG</h2>
 
-        {/* PDF Viewer có cuộn ngang trên mobile */}
-        <div className="w-full overflow-x-auto">
-          <div className="min-w-[900px] h-[100vh]">
-            <iframe
-              src="/6-buoc-ban-hang.pdf"
-              title="Tài liệu 6 bước bán hàng"
-              className="w-full h-full rounded-md"
-              style={{
-                border: "1px solid #ccc",
-              }}
-            />
-          </div>
-        </div>
+        {/* PDF hiển thị bằng Google Docs Viewer */}
+        <iframe
+          src="https://docs.google.com/gview?url=https://quizz-git-main-tuanvypros-projects.vercel.app/6-buoc-ban-hang.pdf&embedded=true"
+          title="Tài liệu 6 bước bán hàng"
+          className="w-full"
+          style={{
+            height: "100vh",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+          }}
+        />
       </div>
     </div>
   );
