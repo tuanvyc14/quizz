@@ -1,87 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import "@react-pdf-viewer/core/lib/styles/index.css";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-import { Worker } from "@react-pdf-viewer/core";
-import { Viewer } from "@react-pdf-viewer/core";
-import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 
-const libraryItems = [
-  {
-    id: "quy-trinh",
-    title: "Quy trình bán hàng cơ bản",
-    type: "pdf",
-    file: "/6-buoc-ban-hang.pdf",
-    thumbnail: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
-  },
-  {
-    id: "honda-sanpham",
-    title: "Kiến thức sản phẩm Honda",
-    type: "pdf",
-    file: "/honda-sanpham.pdf",
-    thumbnail: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
-  },
-];
-
-function Study() {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+const Home = () => {
   const navigate = useNavigate();
 
+  const features = [
+    {
+      title: "Kiểm Tra Kiến Thức",
+      description: "Kiểm tra kiến thức sau đào tạo",
+      icon: "📝",
+      action: () => navigate("/quiz-list"),
+      bg: "bg-green-600 hover:bg-green-700",
+    },
+    {
+      title: "Trung Tâm Đào Tạo",
+      description: "Xem lại các tài liệu và bài học",
+      icon: "📘",
+      action: () => navigate("/study"),
+      bg: "bg-yellow-500 hover:bg-yellow-600",
+    },
+    // Bạn có thể thêm nhiều mục khác ở đây
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4 flex justify-center">
-      <div className="bg-white shadow-md rounded-lg w-full max-w-5xl p-6">
-        {/* Nút quay lại */}
-        <button
-          onClick={() => navigate("/home")}
-          className="mb-4 text-sm text-blue-600 hover:underline"
-        >
-          ← Quay lại Trang Chủ
-        </button>
-
-        <h1 className="text-2xl font-bold mb-6">🏫 Trung Tâm Đào Tạo</h1>
-
-        {!selectedItem && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {libraryItems.map((item) => (
-              <div
-                key={item.id}
-                className="cursor-pointer bg-gray-50 hover:bg-gray-100 p-4 rounded-xl shadow transition"
-                onClick={() => setSelectedItem(item)}
-              >
-                <img
-                  src={item.thumbnail}
-                  alt={item.title}
-                  className="w-16 h-16 mb-4 mx-auto"
-                />
-                <h3 className="text-center text-lg font-semibold">{item.title}</h3>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {selectedItem && (
-          <div className="h-[80vh] mt-4">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-xl font-semibold">📖 {selectedItem.title}</h2>
-              <button
-                className="text-sm text-blue-600 hover:underline"
-                onClick={() => setSelectedItem(null)}
-              >
-                ← Quay lại thư viện
-              </button>
+    <div className="min-h-screen bg-gray-100 py-12 px-4 flex justify-center">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-2xl font-bold text-center mb-8">🏠 Trang Chủ</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              onClick={feature.action}
+              className={`cursor-pointer p-6 rounded-xl text-white ${feature.bg} shadow text-center transition`}
+            >
+              <div className="text-4xl mb-2">{feature.icon}</div>
+              <h2 className="text-xl font-semibold">{feature.title}</h2>
+              <p className="text-sm mt-1 opacity-90">{feature.description}</p>
             </div>
-            <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`}>
-              <Viewer
-                fileUrl={selectedItem.file}
-                plugins={[defaultLayoutPluginInstance]}
-              />
-            </Worker>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default Study;
+export default Home;
