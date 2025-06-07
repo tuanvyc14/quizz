@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import { getAuth } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
 
 function QuizImport() {
   const [quizData, setQuizData] = useState(null);
   const [title, setTitle] = useState("");
-  const [createdBy, setCreatedBy] = useState("Nguyễn Văn A"); // 🔁 sau này lấy từ user đăng nhập
+  const [createdBy, setCreatedBy] = useState("");
+  const db = getFirestore();
+
+  // 🔐 Lấy tên từ tài khoản Firebase
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      const name = user.displayName || user.email || "Người dùng ẩn danh";
+      setCreatedBy(name);
+    }
+  }, []);
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
@@ -13,7 +26,7 @@ function QuizImport() {
     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
     const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-    const questions = jsonData.map((row, index) => ({
+    const questions = jsonData.map((row) => ({
       question: row["Câu hỏi"],
       options: {
         A: row["A"],
@@ -27,16 +40,22 @@ function QuizImport() {
     setQuizData(questions);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    const quizId = title.toLowerCase().replace(/\s+/g, "-");
     const savedQuiz = {
-      quiz_id: title.toLowerCase().replace(/\s+/g, "-"),
+      quiz_id: quizId,
       title,
       created_by: createdBy,
       questions: quizData,
     };
 
-    console.log("🎯 Bài kiểm tra đã tạo:", JSON.stringify(savedQuiz, null, 2));
-    alert("✅ Bài kiểm tra đã được tạo và in ra console! (bước tiếp theo sẽ lưu vào hệ thống)");
+    try {
+      await setDoc(doc(db, "quizzes", quizId), savedQuiz);
+      alert("✅ Đã lưu bài kiểm tra vào Firestore thành công!");
+    } catch (error) {
+      console.error("❌ Lỗi khi lưu Firestore:", error);
+      alert("❌ Lưu thất bại, xem console để biết chi tiết.");
+    }
   };
 
   return (
