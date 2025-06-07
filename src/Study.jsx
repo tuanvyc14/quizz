@@ -27,7 +27,7 @@ function Study() {
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4 flex justify-center">
       <div className="bg-white shadow-md rounded-lg w-full max-w-5xl p-6">
-        <h1 className="text-2xl font-bold mb-6">📚 Thư viện bài học</h1>
+        <h1 className="text-2xl font-bold mb-6">📚 Trung Tâm Đào Tạo</h1>
 
         {!selectedLesson && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
