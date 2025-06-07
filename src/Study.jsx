@@ -13,9 +13,9 @@ const lessons = [
     thumbnail: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
   },
   {
-    id: "ky-nang",
-    title: "Kỹ năng bán hàng",
-    file: "/ky-nang-ban-hang.pdf",
+    id: "honda-sanpham",
+    title: "Kiến thức sản phẩm Honda",
+    file: "/honda-sanpham.pdf",
     thumbnail: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
   },
 ];
