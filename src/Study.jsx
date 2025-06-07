@@ -5,45 +5,63 @@ import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 
+const lessons = [
+  {
+    id: "quy-trinh",
+    title: "Quy trình bán hàng cơ bản",
+    file: "/6-buoc-ban-hang.pdf",
+    thumbnail: "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
+  },
+  {
+    id: "ky-nang",
+    title: "Kỹ năng bán hàng",
+    file: "/ky-nang-ban-hang.pdf",
+    thumbnail: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+  },
+];
+
 function Study() {
-  const [showLessons, setShowLessons] = useState(false);
   const [selectedLesson, setSelectedLesson] = useState(null);
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4 flex justify-center">
-      <div className="bg-white shadow-md rounded-lg w-full max-w-4xl p-4">
-        <h1 className="text-2xl font-bold mb-4">📘 Tài liệu ôn tập</h1>
+      <div className="bg-white shadow-md rounded-lg w-full max-w-5xl p-6">
+        <h1 className="text-2xl font-bold mb-6">📚 Thư viện bài học</h1>
 
-        {/* Nút chính */}
-        {!showLessons && (
-          <button
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition mb-4"
-            onClick={() => setShowLessons(true)}
-          >
-            Nhân viên bán hàng
-          </button>
-        )}
-
-        {/* Danh sách bài học */}
-        {showLessons && !selectedLesson && (
-          <div className="space-y-2">
-            <button
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-              onClick={() => setSelectedLesson("quy-trinh")}
-            >
-              Quy trình bán hàng cơ bản
-            </button>
-            {/* Có thể thêm các nút bài học khác tại đây */}
+        {!selectedLesson && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {lessons.map((lesson) => (
+              <div
+                key={lesson.id}
+                className="cursor-pointer bg-gray-50 hover:bg-gray-100 p-4 rounded-xl shadow transition"
+                onClick={() => setSelectedLesson(lesson)}
+              >
+                <img
+                  src={lesson.thumbnail}
+                  alt={lesson.title}
+                  className="w-16 h-16 mb-4 mx-auto"
+                />
+                <h3 className="text-center text-lg font-semibold">{lesson.title}</h3>
+              </div>
+            ))}
           </div>
         )}
 
-        {/* Hiển thị tài liệu */}
-        {selectedLesson === "quy-trinh" && (
-          <div className="mt-6 h-[80vh] overflow-hidden">
+        {selectedLesson && (
+          <div className="h-[80vh] mt-4">
+            <div className="flex justify-between items-center mb-2">
+              <h2 className="text-xl font-semibold">📖 {selectedLesson.title}</h2>
+              <button
+                className="text-sm text-blue-600 hover:underline"
+                onClick={() => setSelectedLesson(null)}
+              >
+                ← Quay lại thư viện
+              </button>
+            </div>
             <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`}>
               <Viewer
-                fileUrl="/6-buoc-ban-hang.pdf"
+                fileUrl={selectedLesson.file}
                 plugins={[defaultLayoutPluginInstance]}
               />
             </Worker>
